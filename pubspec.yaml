@@ -38,6 +38,7 @@ dependencies:
   google_fonts: ^4.0.4
   flutter_adaptive_scaffold: ^0.1.3
   transparent_image: ^2.0.1
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:

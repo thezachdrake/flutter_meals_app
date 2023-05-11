@@ -3,9 +3,15 @@ import '../data/dummy_data.dart';
 import '../screens/meals.dart';
 import '../widgets/category_grid_item.dart';
 import '../models/category.dart';
+import '../models/meal.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
+  const CategoriesScreen({
+    super.key,
+    required this.onToggleFav,
+  });
+
+  final void Function(Meal meal) onToggleFav;
 
   void _selectCategory(BuildContext context, Category category) {
     final filteredMeals = dummyMeals
@@ -18,6 +24,7 @@ class CategoriesScreen extends StatelessWidget {
         builder: (ctx) => MealsScreen(
           title: category.title,
           meals: filteredMeals,
+          onToggleFav: onToggleFav,
         ),
       ),
     );
@@ -25,26 +32,21 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Pick your category"),
-      ),
-      body: GridView(
-        padding: const EdgeInsets.all(25),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 1.5,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20),
-        children: [
-          for (final category in availableCategories)
-            CategoryGridItem(
-                category: category,
-                onSelectCategory: () {
-                  _selectCategory(context, category);
-                })
-        ],
-      ),
+    return GridView(
+      padding: const EdgeInsets.all(25),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 1.5,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20),
+      children: [
+        for (final category in availableCategories)
+          CategoryGridItem(
+              category: category,
+              onSelectCategory: () {
+                _selectCategory(context, category);
+              })
+      ],
     );
   }
 }
