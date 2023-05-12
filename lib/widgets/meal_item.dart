@@ -47,48 +47,50 @@ class MealItem extends StatelessWidget {
               bottom: 0,
               left: 0,
               right: 0,
-              child: Container(
-                color: Colors.black87,
-                padding: const EdgeInsets.symmetric(
+              child: Card(
+                margin: const EdgeInsets.symmetric(
                   vertical: 6,
                   horizontal: 44,
                 ),
-                child: Column(children: [
-                  Text(
-                    meal.title,
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
-                    softWrap: true,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      MealItemTrait(
-                          icon: Icons.schedule,
-                          label: '${meal.duration} minutes'),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      MealItemTrait(
-                        icon: Icons.work,
-                        label: complexityText,
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      MealItemTrait(
-                        icon: Icons.money,
-                        label: affordText,
-                      )
-                    ],
-                  ),
-                ]),
+                child: Padding(
+                  padding: const EdgeInsets.all(6),
+                  child: Column(children: [
+                    Text(
+                      meal.title,
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                      softWrap: true,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        MealItemTrait(
+                            icon: Icons.schedule,
+                            label: '${meal.duration} minutes'),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        MealItemTrait(
+                          icon: Icons.work,
+                          label: complexityText,
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        MealItemTrait(
+                          icon: Icons.money,
+                          label: affordText,
+                        )
+                      ],
+                    ),
+                  ]),
+                ),
               ),
             )
           ],

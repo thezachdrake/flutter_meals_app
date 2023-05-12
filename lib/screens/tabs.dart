@@ -60,7 +60,12 @@ class _TabsScreenState extends State<TabsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(activePageTitle),
+        title: Text(
+          activePageTitle,
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.bold),
+        ),
       ),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
